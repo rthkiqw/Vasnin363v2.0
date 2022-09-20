@@ -1,0 +1,16 @@
+C:\Users\student\source\repos\Vasnin363\class4\obj\Debug\class4.csproj.AssemblyReference.cache
+C:\Users\student\source\repos\Vasnin363\class4\obj\Debug\class4.csproj.SuggestedBindingRedirects.cache
+C:\Users\student\source\repos\Vasnin363\class4\obj\Debug\App.g.cs
+C:\Users\student\source\repos\Vasnin363\class4\obj\Debug\class4_MarkupCompile.cache
+C:\Users\student\source\repos\Vasnin363\class4\bin\Debug\class4.exe.config
+C:\Users\student\source\repos\Vasnin363\class4\bin\Debug\class4.exe
+C:\Users\student\source\repos\Vasnin363\class4\bin\Debug\class4.pdb
+C:\Users\student\source\repos\Vasnin363\class4\obj\Debug\MainWindow.g.cs
+C:\Users\student\source\repos\Vasnin363\class4\obj\Debug\class4_MarkupCompile.lref
+C:\Users\student\source\repos\Vasnin363\class4\obj\Debug\MainWindow.baml
+C:\Users\student\source\repos\Vasnin363\class4\obj\Debug\class4.g.resources
+C:\Users\student\source\repos\Vasnin363\class4\obj\Debug\class4.Properties.Resources.resources
+C:\Users\student\source\repos\Vasnin363\class4\obj\Debug\class4.csproj.GenerateResource.cache
+C:\Users\student\source\repos\Vasnin363\class4\obj\Debug\class4.csproj.CoreCompileInputs.cache
+C:\Users\student\source\repos\Vasnin363\class4\obj\Debug\class4.exe
+C:\Users\student\source\repos\Vasnin363\class4\obj\Debug\class4.pdb

@@ -1,0 +1,50 @@
+﻿<Window x:Class="class6.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:class6"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0">
+            <Label FontSize="20">Print something:</Label>
+            <TextBox KeyDown="textBox_KeyDown" Margin="1" BorderThickness="2" TextWrapping="Wrap" Name="textBox" Height="30"></TextBox>
+            <ComboBox Margin="5" Name="cmbx">
+            </ComboBox>
+            <Button Margin="1" Click="Button_Click_Remove" Content="Remove" HorizontalAlignment="Right" Height="30" Width="340"/>
+            <Button Margin="1" Click="Button_Click_Clear" FontSize="20" Foreground="OrangeRed" BorderBrush ="OrangeRed" Content="Clear" Height="30"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="0">
+            <Button Click="ButtonListBoxCopy" Margin="0,150,0,2" FontSize="15" Content="Copy"/>
+            <Button Click="ButtonListBoxMove" Margin="0,0,0,2" FontSize="15" Content="Move"/>
+            <Button Click="ButtonListBoxGetBack" FontSize="15" Content="Get back"/>
+        </StackPanel>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <ListBox Name="listBox" Grid.Row="0"></ListBox>
+
+            <Grid Grid.Row="1" Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Button Click="RemoveListBoxButton" Margin="1" Grid.Column="0" Grid.Row="0" Content="Remove"/>
+                <Button Click="ClearListBoxButton" Foreground="OrangeRed" BorderBrush="OrangeRed" Margin="1" Grid.Column="1" Grid.Row="0" Content="Clear"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

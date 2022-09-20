@@ -1,0 +1,57 @@
+﻿<Page x:Class="Study.CreateGroupPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Study"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CreateGroupPage">
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <ListBox Margin="10" Grid.Column="0" ItemsSource="{Binding Groups}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Style="{DynamicResource ListBoxColor}">
+                        <Run Text="{Binding Id}"/>
+                    </TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <GroupBox Grid.Column="1" Margin="10" Header="Создание новой группы">
+            <StackPanel Margin="10,0,10,0" DataContext="{Binding Group}">
+                <Label >Введите номер группы:</Label>
+                <TextBox Text="{Binding Id}" Name="tbGropId" ></TextBox>
+                <Label>Код специальности</Label>
+                <ComboBox Name="cmbGSpecId">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <ComboBoxItem Content="{Binding Id}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <Label >Введите номер курса группы</Label>
+                <ComboBox Text="{Binding Course}" Name="cmbGCourseId">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <ComboBoxItem Content="{Binding Id}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <Button Click="AddGroup" Grid.Column="0"  Margin="0,20,0,0">Создать группу</Button>
+            </StackPanel>
+        </GroupBox>
+        <StackPanel VerticalAlignment="Center" Grid.Column="2">
+            <Label HorizontalAlignment="Center" FontWeight="Bold">Навигация</Label>
+            <Button Click="FirstPage" Margin="5">Главная</Button>
+            <Button Click="StudPage" Margin="5">Новый Студент</Button>
+            <Button Click="GrPage" Margin="5">Новая группа</Button>
+            <Button Click="SpecPage" Margin="5">Новая специальность</Button>
+        </StackPanel>
+    </Grid>
+</Page>

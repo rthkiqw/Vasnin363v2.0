@@ -1,0 +1,72 @@
+﻿<Window x:Class="EmployeeRedactor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EmployeeRedactor"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Foreground="Red" HorizontalAlignment="Center">EMPLOYEE LIST</Label>
+            <ListBox SelectionChanged="empList_SelectionChanged" ItemsSource="{Binding Employees}" Name="empList" Grid.Row="1">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <Label Foreground="Red">
+                                Employee:
+                            </Label>
+                        <Run Text="{Binding Name}"></Run>
+                        <Run Text="{Binding Surname}"></Run>
+                        <Run Text="{Binding MiddleName}"></Run>
+                        <Run Text="{Binding Position}"></Run>
+                        </TextBlock>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <ScrollViewer Grid.Row="2">
+                <StackPanel Name="editor" IsEnabled="False">
+                    <Label>EDIT NAME</Label>
+                    <TextBox Text="{Binding ElementName=empList,Path=SelectedItem.Name}"></TextBox>
+                    <Label>EDIT SURNAME</Label>
+                    <TextBox Text="{Binding ElementName=empList,Path=SelectedItem.Surname}"></TextBox>
+                    <Label>EDIT MIDDLE NAME</Label>
+                    <TextBox Text="{Binding ElementName=empList,Path=SelectedItem.MiddleName}"></TextBox>
+                    <Label>EDIT POSITION</Label>
+                    <TextBox Text="{Binding ElementName=empList,Path=SelectedItem.Position}"></TextBox>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Margin="10" Grid.Row="0">
+                <Label Foreground="Red" HorizontalAlignment="Center">EMPLOYEE REDACTOR 3000</Label>
+                <Label>Print Name:</Label>
+                <TextBox Name="tbName"></TextBox>
+                <Label>Print Surname:</Label>
+                <TextBox Name="tbSurname"></TextBox>
+                <Label>Print Middle Name:</Label>
+                <TextBox Name="tbMiddleName"></TextBox>
+                <Label>Print Position:</Label>
+                <ComboBox Name="tbPosition" ItemsSource="{Binding Positions}"></ComboBox>
+                <Label>New position</Label>
+                <TextBox Name="CreateNewPos"></TextBox>
+            </StackPanel>
+            <Button Margin="10" Content="Sign Up" Grid.Row="1" Click="Button_Click"/>
+            <Button HorizontalAlignment="Left" Margin="10" Content="New position" Grid.Row="1" Click="Button_Click_1"/>
+            
+        </Grid>
+    </Grid>
+</Window>

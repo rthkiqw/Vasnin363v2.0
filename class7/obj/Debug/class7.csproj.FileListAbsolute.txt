@@ -1,0 +1,16 @@
+C:\Users\student\source\repos\Vasnin363\class7\bin\Debug\class7.exe.config
+C:\Users\student\source\repos\Vasnin363\class7\bin\Debug\class7.exe
+C:\Users\student\source\repos\Vasnin363\class7\bin\Debug\class7.pdb
+C:\Users\student\source\repos\Vasnin363\class7\obj\Debug\class7.csproj.AssemblyReference.cache
+C:\Users\student\source\repos\Vasnin363\class7\obj\Debug\class7.csproj.SuggestedBindingRedirects.cache
+C:\Users\student\source\repos\Vasnin363\class7\obj\Debug\MainWindow.g.cs
+C:\Users\student\source\repos\Vasnin363\class7\obj\Debug\App.g.cs
+C:\Users\student\source\repos\Vasnin363\class7\obj\Debug\class7_MarkupCompile.cache
+C:\Users\student\source\repos\Vasnin363\class7\obj\Debug\class7_MarkupCompile.lref
+C:\Users\student\source\repos\Vasnin363\class7\obj\Debug\MainWindow.baml
+C:\Users\student\source\repos\Vasnin363\class7\obj\Debug\class7.g.resources
+C:\Users\student\source\repos\Vasnin363\class7\obj\Debug\class7.Properties.Resources.resources
+C:\Users\student\source\repos\Vasnin363\class7\obj\Debug\class7.csproj.GenerateResource.cache
+C:\Users\student\source\repos\Vasnin363\class7\obj\Debug\class7.csproj.CoreCompileInputs.cache
+C:\Users\student\source\repos\Vasnin363\class7\obj\Debug\class7.exe
+C:\Users\student\source\repos\Vasnin363\class7\obj\Debug\class7.pdb

@@ -1,0 +1,132 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using Npgsql;
+using NpgsqlTypes;
+
+namespace Study
+{
+    /// <summary>
+    /// Логика взаимодействия для CreateStudentPage.xaml
+    /// </summary>
+    public partial class CreateStudentPage : Page
+    {
+        public ObservableCollection<Speciality> Specialities { get; set; } = new ObservableCollection<Speciality>();
+        public ObservableCollection<Group> Groups { get; set; } = new ObservableCollection<Group>();
+        public Group Group { get; set; } = new Group();
+        public ObservableCollection<Course> Courses { get; set; } = new ObservableCollection<Course>();
+        public ObservableCollection<Student> Students { get; set; } = new ObservableCollection<Student>();
+        public Student Student { get; set; } = new Student();
+        public CreateStudentPage()
+        {
+            InitializeComponent();
+            DataContext = this;
+            LoadGroups();
+            LoadStuds();
+            Binding binding = new Binding();
+            binding.Source = Groups;
+            cmbStGroup.ItemsSource = Groups;
+        }
+        private void AddStudent(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int Id = Convert.ToInt32(tbStudentId.Text.Trim());
+                string Name = tbStundetName.Text.Trim();
+                string Surname = tbStudentSurname.Text.Trim();
+                string Patronymic = tbStudentPatronymic.Text.Trim();
+                if (cmbStGroup.SelectedItem == null) return;
+                int group = (cmbStGroup.SelectedItem as Group).Id;
+                if (Id == 0 &&
+                   Name.Length == 0 &&
+                   Surname.Length == 0 &&
+                   Patronymic.Length == 0) return;
+
+                NpgsqlCommand command = dbConnect.GetCommand("INSERT INTO \"Student\"(\"Id\",\"Name\",\"Surname\",\"Patronymic\",\"Group\") VALUES (@id,@name,@surname,@patronymic,@group)");
+                command.Parameters.AddWithValue("@id", NpgsqlDbType.Integer, Id);
+                command.Parameters.AddWithValue("@name", NpgsqlDbType.Varchar, Name);
+                command.Parameters.AddWithValue("@surname", NpgsqlDbType.Varchar, Surname);
+                command.Parameters.AddWithValue("@patronymic", NpgsqlDbType.Varchar, Patronymic);
+                command.Parameters.AddWithValue("@group", NpgsqlDbType.Integer, group);
+                int result = command.ExecuteNonQuery();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("already exist" + error.Message);
+            }
+            tbStudentId.Clear();
+            tbStundetName.Clear();
+            tbStudentSurname.Clear();
+            tbStudentPatronymic.Clear();
+            cmbStGroup.SelectedItem = null;
+            LoadStuds();
+        }
+        private void FirstPage(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(PageControl.main_page);
+        }
+        private void StudPage(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(PageControl.createStudent);
+        }
+
+        private void GrPage(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(PageControl.createGroup);
+        }
+
+        private void SpecPage(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(PageControl.createSpec);
+        }
+        private void LoadGroups()
+        {
+            Groups.Clear();
+            NpgsqlCommand command = dbConnect.GetCommand("Select \"Id\",\"Speciality\",\"Course\" FROM \"Group\" ORDER by \"Id\"");
+            NpgsqlDataReader result = command.ExecuteReader();
+            if (result.HasRows)
+            {
+                while (result.Read())
+                {
+                    int specId = result.GetInt32(1);
+                    int courseId = result.GetInt32(2);
+                    var scpecialty = Specialities.Where(x => x.Id == specId).FirstOrDefault();
+                    var course = Courses.Where(x => x.Id == courseId).FirstOrDefault();
+
+                    Groups.Add(new Group(result.GetInt32(0), scpecialty, course));
+                }
+            }
+            result.Close();
+
+        }
+        private void LoadStuds()
+        {
+            Students.Clear();
+            NpgsqlCommand command = dbConnect.GetCommand("Select \"Id\",\"Surname\",\"Name\",\"Patronymic\", \"Group\" FROM \"Student\" ORDER by \"Id\"");
+            NpgsqlDataReader result = command.ExecuteReader();
+            if (result.HasRows)
+            {
+                while (result.Read())
+                {
+                    Students.Add(new Student(result.GetInt32(0), result.GetString(1), result.GetString(2), result.GetString(3), result.GetInt32(4)));
+                }
+            }
+            result.Close();
+
+        }
+
+
+    }
+}
