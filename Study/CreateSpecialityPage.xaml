@@ -23,7 +23,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <GroupBox Grid.Column="1" Margin="10" Header="Создание новой специальности">
+        <GroupBox Grid.Column="1" Header="Создание новой специальности">
             <StackPanel DataContext="{Binding Specialitiy}" Margin="10,0,10,0" Grid.Column="2">
                 <Label >Введите номер специальости:</Label>
                 <TextBox Text="{Binding Id}" Name="tbSpecId" ></TextBox>

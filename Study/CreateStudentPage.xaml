@@ -12,9 +12,10 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
-        <ListBox Margin="10" Grid.Column="0" ItemsSource="{Binding Students}">
+        <ListBox Name="lbStudents" SelectionChanged="StudentEditor" Margin="10" Grid.Column="0" ItemsSource="{Binding Students}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Style="{DynamicResource ListBoxColor}">
@@ -31,7 +32,28 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <GroupBox Grid.Column="1" Margin="10" Header="Новый студент">
+        <GroupBox Grid.Column="1" Header="Редактирование">
+            <StackPanel Name="spStudentEditor" IsEnabled="False" DataContext="{Binding Student}" Margin="10,0,10,0">
+                <Label>Введите номер студенческого билета:</Label>
+                <TextBox IsEnabled="False" Name="tbStIdEdit" Text="{Binding ElementName=lbStudents,Path=SelectedItem.Id,UpdateSourceTrigger=PropertyChanged}"/>
+                <Label>Введите имя студента:</Label>
+                <TextBox Name="tbStNameEdit" Text="{Binding ElementName=lbStudents,Path=SelectedItem.Name,UpdateSourceTrigger=PropertyChanged}"/>
+                <Label>Введите фамилию студента:</Label>
+                <TextBox Name="tbStSurnameEdit" Text="{Binding ElementName=lbStudents,Path=SelectedItem.Surname,UpdateSourceTrigger=PropertyChanged}"/>
+                <Label>Введите отчество студента:</Label>
+                <TextBox Name="tbStPatronymicEdit" Text="{Binding ElementName=lbStudents,Path=SelectedItem.Patronymic,UpdateSourceTrigger=PropertyChanged}"/>
+                <Label>Выберите группу:</Label>
+                <ComboBox Name="cmbStGroupEdit">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <ComboBoxItem Content="{Binding Id,UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <Button Click="SaveEditionsButton" Grid.Column="1" Grid.Row="2" Margin="0,20" >Сохранить</Button>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Grid.Column="2" Header="Новый студент">
             <StackPanel Margin="10,0,10,0" Grid.Column="1" DataContext="{Binding Student}">
                 <Label>Введите номер студенческого билета:</Label>
                 <TextBox Text="{Binding Id}" Name="tbStudentId"></TextBox>
@@ -52,7 +74,7 @@
                 <Button Click="AddStudent" Grid.Column="1" Grid.Row="2" Margin="0,20" >Новый студент</Button>
             </StackPanel>
         </GroupBox>
-        <StackPanel VerticalAlignment="Center" Grid.Column="2">
+        <StackPanel VerticalAlignment="Center" Grid.Column="3">
             <Label HorizontalAlignment="Center" FontWeight="Bold">Навигация</Label>
             <Button Click="FirstPage" Margin="5">Главная</Button>
             <Button Click="StudPage" Margin="5">Новый Студент</Button>

@@ -34,9 +34,15 @@ namespace Study
             Binding binding = new Binding();
             binding.Source = Courses;
             cmbGCourseId.ItemsSource = Courses;
+
             Binding binding1 = new Binding();
             binding.Source = Specialities;
             cmbGSpecId.ItemsSource = Specialities;
+
+            Binding binding3 = new Binding();
+            binding3.Source = Specialities;
+            cmbGrSpecEdit.ItemsSource= Specialities;
+
             LoadGroups();
             LoadCourses();
             LoadSpec();
@@ -137,5 +143,30 @@ namespace Study
 
         }
 
+        private void SaveGroupEditions(object sender, RoutedEventArgs e)
+        {
+            spGroupEditor.IsEnabled = false;
+
+            try
+            {
+                int SpecId = (cmbGrSpecEdit.SelectedItem as Speciality).Id;
+                int GroupId =(lbGroups.SelectedItem as Group).Id;
+                if (cmbGrSpecEdit.SelectedItem == null) return;
+
+                NpgsqlCommand command = dbConnect.GetCommand("UPDATE \"Group\" SET \"Speciality\" = @speciality WHERE \"Id\" = @id");
+                command.Parameters.AddWithValue("@id", NpgsqlDbType.Integer, GroupId);
+                command.Parameters.AddWithValue("@speciality", NpgsqlDbType.Integer, SpecId);
+                int result = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("somme errors here " + ex.Message);
+            }
+        }
+
+        private void lbGroups_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            spGroupEditor.IsEnabled = true;
+        }
     }
 }

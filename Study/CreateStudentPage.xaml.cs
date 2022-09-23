@@ -38,6 +38,7 @@ namespace Study
             Binding binding = new Binding();
             binding.Source = Groups;
             cmbStGroup.ItemsSource = Groups;
+            cmbStGroupEdit.ItemsSource = Groups;
         }
         private void AddStudent(object sender, RoutedEventArgs e)
         {
@@ -127,6 +128,41 @@ namespace Study
 
         }
 
+        private void SaveEditionsButton(object sender, RoutedEventArgs e)
+        {
+            spStudentEditor.IsEnabled = false;
+            try
+            {
+                int Id = Convert.ToInt32(tbStIdEdit.Text.Trim());
+                string Name = tbStNameEdit.Text.Trim();
+                string Surname = tbStSurnameEdit.Text.Trim();
+                string Patronymic = tbStPatronymicEdit.Text.Trim();
+                if (cmbStGroupEdit.SelectedItem == null) return;
+                int group = (cmbStGroupEdit.SelectedItem as Group).Id;
+                if (Id == 0 &&
+                   Name.Length == 0 &&
+                   Surname.Length == 0 &&
+                   Patronymic.Length == 0) return;
 
+                NpgsqlCommand command = dbConnect.GetCommand("UPDATE \"Student\" SET \"Id\" = @id,\"Name\" = @name,\"Surname\" = @surname,\"Patronymic\" = @patronymic,\"Group\" = @group WHERE \"Id\" = @id");
+                command.Parameters.AddWithValue("@id", NpgsqlDbType.Integer, Id);
+                command.Parameters.AddWithValue("@name", NpgsqlDbType.Varchar, Name);
+                command.Parameters.AddWithValue("@surname", NpgsqlDbType.Varchar, Surname);
+                command.Parameters.AddWithValue("@patronymic", NpgsqlDbType.Varchar, Patronymic);
+                command.Parameters.AddWithValue("@group", NpgsqlDbType.Integer, group);
+                int result = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("somme errors here " + ex.Message);
+            }
+    }
+
+        private void StudentEditor(object sender, SelectionChangedEventArgs e)
+        {
+
+            spStudentEditor.IsEnabled = true;
+
+        }
     }
 }
