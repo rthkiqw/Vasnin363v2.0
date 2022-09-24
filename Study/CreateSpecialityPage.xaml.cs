@@ -29,7 +29,7 @@ namespace Study
         {
             InitializeComponent();
             DataContext = this;
-            LoadSpec();
+            //LoadSpec();
         }
 
         private void AddSpec(object sender, RoutedEventArgs e)
@@ -51,7 +51,7 @@ namespace Study
             }
             tbSpecId.Clear();
             tbSpecName.Clear();
-            LoadSpec();
+            //LoadSpec();
         }
         private void FirstPage(object sender, RoutedEventArgs e)
         {
@@ -85,6 +85,28 @@ namespace Study
             }
             result.Close();
 
+        }
+
+        private void SaveSpecEditions(object sender, RoutedEventArgs e)
+        {
+            spSpecEditor.IsEnabled = false;
+            try
+            {
+                int Id = Convert.ToInt32(tbSpecIdEdit.Text.Trim());
+                string Name = tbSpecNameEdit.Text.Trim();
+
+                if (tbSpecIdEdit == null &&
+                    tbSpecNameEdit.Text.Length == 0) return;
+
+                NpgsqlCommand command = dbConnect.GetCommand("UPDATE \"Specialties\" SET \"Id\" = @id,\"Name\" = @name WHERE \"Id\" = @id");
+                command.Parameters.AddWithValue("@id", NpgsqlDbType.Integer, Id);
+                command.Parameters.AddWithValue("@name", NpgsqlDbType.Varchar, Name);
+                int result = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("somme errors here " + ex.Message);
+            }
         }
     }
 }

@@ -43,9 +43,9 @@ namespace Study
             binding3.Source = Specialities;
             cmbGrSpecEdit.ItemsSource= Specialities;
 
-            LoadGroups();
-            LoadCourses();
-            LoadSpec();
+            //LoadGroups();
+            //LoadCourses();
+           // LoadSpec();
         }
         private void AddGroup(object sender, RoutedEventArgs e)
         {
@@ -71,7 +71,7 @@ namespace Study
             tbGropId.Clear();
             cmbGCourseId.SelectedItem = null;
             cmbGSpecId.SelectedItem = null;
-            LoadGroups();
+            //LoadGroups();
         }
 
         private void FirstPage(object sender, RoutedEventArgs e)

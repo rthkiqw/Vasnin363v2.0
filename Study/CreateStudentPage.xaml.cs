@@ -33,8 +33,8 @@ namespace Study
         {
             InitializeComponent();
             DataContext = this;
-            LoadGroups();
-            LoadStuds();
+            //LoadGroups();
+            //LoadStuds();
             Binding binding = new Binding();
             binding.Source = Groups;
             cmbStGroup.ItemsSource = Groups;
@@ -72,7 +72,7 @@ namespace Study
             tbStudentSurname.Clear();
             tbStudentPatronymic.Clear();
             cmbStGroup.SelectedItem = null;
-            LoadStuds();
+            //LoadStuds();
         }
         private void FirstPage(object sender, RoutedEventArgs e)
         {

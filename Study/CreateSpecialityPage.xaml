@@ -12,9 +12,19 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
-        <ListBox Margin="10" Grid.Column="0" ItemsSource="{Binding Specialities}">
+        <GroupBox Grid.Column="1" Header="Редактирование">
+            <StackPanel Name="spSpecEditor" IsEnabled="False" DataContext="{Binding lbSpecialties}" Margin="10,0,10,0">
+                <Label >Введите номер специальости:</Label>
+                <TextBox Text="{Binding Id}" Name="tbSpecIdEdit" ></TextBox>
+                <Label >Введите название специальности</Label>
+                <TextBox Text="{Binding Name}" Name="tbSpecNameEdit" ></TextBox>
+                <Button Click="SaveSpecEditions" Grid.Column="2" Grid.Row="2"  Margin="0,20">Сохранить</Button>
+            </StackPanel>
+        </GroupBox>
+        <ListBox Name="lbSpecialties" Margin="10" Grid.Column="0" ItemsSource="{Binding Specialities}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Style="{DynamicResource ListBoxColor}">
@@ -23,7 +33,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <GroupBox Grid.Column="1" Header="Создание новой специальности">
+        <GroupBox Grid.Column="2" Header="Создание новой специальности">
             <StackPanel DataContext="{Binding Specialitiy}" Margin="10,0,10,0" Grid.Column="2">
                 <Label >Введите номер специальости:</Label>
                 <TextBox Text="{Binding Id}" Name="tbSpecId" ></TextBox>
@@ -32,7 +42,7 @@
                 <Button Click="AddSpec" Grid.Column="2" Grid.Row="2"  Margin="0,20">Создать специальность</Button>
             </StackPanel>
         </GroupBox>
-        <StackPanel VerticalAlignment="Center" Grid.Column="2">
+        <StackPanel VerticalAlignment="Center" Grid.Column="3">
             <Label HorizontalAlignment="Center" FontWeight="Bold">Навигация</Label>
             <Button Click="FirstPage" Margin="5">Главная</Button>
             <Button Click="StudPage" Margin="5">Новый Студент</Button>

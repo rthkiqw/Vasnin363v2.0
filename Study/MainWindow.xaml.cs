@@ -30,7 +30,7 @@ namespace Study
             cmbGCourseId.SetBinding(ComboBox.ItemsSourceProperty, binding2);
             */
 
-            dbConnect.Connect("10.14.206.27", "5432", "student", "1234", "study");
+            //dbConnect.Connect("10.14.206.27", "5432", "student", "1234", "study");
 
             MainFrame.Navigate(PageControl.main_page);
         }

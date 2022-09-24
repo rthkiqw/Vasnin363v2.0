@@ -9,15 +9,15 @@
             <Setter Property="Foreground" Value="Black"/>
         </Style>
         <Style TargetType="TextBox">
-            <Setter Property="BorderBrush" Value="MediumAquamarine"/>
+            <Setter Property="BorderBrush" Value="PaleVioletRed"/>
         </Style>
 
         <Style TargetType="ListBox">
-            <Setter Property="BorderBrush" Value="MediumAquamarine"/>
+            <Setter Property="BorderBrush" Value="PaleVioletRed"/>
         </Style>
 
         <Style TargetType="GroupBox">
-            <Setter Property="BorderBrush" Value="MediumAquamarine"/>
+            <Setter Property="BorderBrush" Value="PaleVioletRed"/>
             <Setter Property="Margin" Value="10,0.5"/>
         </Style>
 
@@ -34,11 +34,11 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <SolidColorBrush x:Key="Button.Static.Background" Color="#66CDAA"/>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="PaleVioletRed"/>
         <SolidColorBrush x:Key="Button.Static.Border" Color="White"/>
         <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
         <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#000000"/>
-        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#8FBC8F"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="IndianRed"/>
         <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
         <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
         <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
@@ -51,7 +51,7 @@
             <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Foreground" Value="MintCream"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
