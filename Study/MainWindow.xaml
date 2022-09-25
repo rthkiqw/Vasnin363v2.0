@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
 
         <Border Grid.Row="0" MouseDown="Border_MouseDown">
-            <Grid HorizontalAlignment="Stretch">
+            <Grid Background="#252525" HorizontalAlignment="Stretch">
                 <Label Grid.Row="0" Foreground="Gray" FontWeight="SemiBold" FontSize="9">KTK</Label>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <Button
@@ -26,9 +26,10 @@
                         FontWeight="Bold"
                         Content="🗕"
                         BorderThickness="0"
-                        Background="#303030"
+                        Background="Transparent"
                         Height="20" Width="20"
-                        Margin="0,0,0,4">
+                        Margin="0,0,0,4"
+                        >
                     </Button>
 
                     <Button
@@ -38,7 +39,7 @@
                         FontWeight="Bold"
                         Content="☐"
                         BorderThickness="0"
-                        Background="#303030"
+                        Background="Transparent"
                         Height="20" Width="20">
                     </Button>
 
@@ -49,7 +50,7 @@
                         FontWeight="Bold"
                         Content="✕"
                         BorderThickness="0"
-                        Background="#303030"
+                        Background="Transparent"
                         Height="20" Width="20">
                     </Button>
                 </StackPanel>
