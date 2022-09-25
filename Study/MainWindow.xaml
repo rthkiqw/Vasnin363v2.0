@@ -5,8 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Study"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Height="450" Width="800"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="CanResizeWithGrip">
     <Grid>
-        <Frame Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" MouseDown="Border_MouseDown">
+            <Grid HorizontalAlignment="Stretch">
+                <Label Grid.Row="0" Foreground="Gray" FontWeight="SemiBold" FontSize="9">KTK</Label>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button
+                        x:Name="MinimizeButton"
+                        Click="MinimizeWindow_Click"
+                        Foreground="LightGray"
+                        FontWeight="Bold"
+                        Content="🗕"
+                        BorderThickness="0"
+                        Background="#303030"
+                        Height="20" Width="20"
+                        Margin="0,0,0,4">
+                    </Button>
+
+                    <Button
+                        x:Name="StateButton"
+                        Click="StateWindow_Click"
+                        Foreground="LightGray"
+                        FontWeight="Bold"
+                        Content="☐"
+                        BorderThickness="0"
+                        Background="#303030"
+                        Height="20" Width="20">
+                    </Button>
+
+                    <Button
+                        x:Name="ShutDownButton"
+                        Click="ShutDownWindow_Click"
+                        Foreground="LightGray"
+                        FontWeight="Bold"
+                        Content="✕"
+                        BorderThickness="0"
+                        Background="#303030"
+                        Height="20" Width="20">
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Frame Grid.Row="1" Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>
     </Grid>
 </Window>

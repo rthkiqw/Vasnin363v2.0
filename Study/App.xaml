@@ -5,25 +5,48 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
 
+        <Style TargetType="Grid">
+            <Setter Property="Background" Value="#303030"/>
+        </Style>
+
         <Style x:Key="ListBoxColor" TargetType="{x:Type TextBlock}">
-            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Foreground" Value="MintCream"/>
+            
         </Style>
         <Style TargetType="TextBox">
-            <Setter Property="BorderBrush" Value="PaleVioletRed"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="Gray"/>
+            <Setter Property="Foreground" Value="MintCream"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Cursor" Value="Arrow"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Height" Value="30"/>
         </Style>
 
         <Style TargetType="ListBox">
-            <Setter Property="BorderBrush" Value="PaleVioletRed"/>
+            <Setter Property="Background" Value="#404040"/>
+            <Setter Property="BorderThickness" Value="0"/>
         </Style>
 
         <Style TargetType="GroupBox">
-            <Setter Property="BorderBrush" Value="PaleVioletRed"/>
+            <Setter Property="Background" Value="#404040"/>
             <Setter Property="Margin" Value="10,0.5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="MintCream"/>
         </Style>
 
         <Style TargetType="{x:Type Label}">
-            <Setter Property="FontStyle" Value="Italic"/>
-            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontStyle" Value="Normal"/>
+            <Setter Property="Foreground" Value="MintCream"/>
         </Style>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -34,11 +57,11 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <SolidColorBrush x:Key="Button.Static.Background" Color="PaleVioletRed"/>
-        <SolidColorBrush x:Key="Button.Static.Border" Color="White"/>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#CC9933"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#404040"/>
         <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
-        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#000000"/>
-        <SolidColorBrush x:Key="Button.Pressed.Background" Color="IndianRed"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="MintCream"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#CC9900"/>
         <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
         <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
         <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
@@ -52,10 +75,11 @@
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Foreground" Value="MintCream"/>
-            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderThickness" Value="1.5"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Padding" Value="1.3"/>
+            <Setter Property="Height" Value="50"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">

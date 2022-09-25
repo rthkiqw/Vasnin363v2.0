@@ -133,16 +133,15 @@ namespace Study
             spStudentEditor.IsEnabled = false;
             try
             {
-                int Id = Convert.ToInt32(tbStIdEdit.Text.Trim());
+                int Id = (lbStudents.SelectedItem as Student).Id;
                 string Name = tbStNameEdit.Text.Trim();
                 string Surname = tbStSurnameEdit.Text.Trim();
                 string Patronymic = tbStPatronymicEdit.Text.Trim();
                 if (cmbStGroupEdit.SelectedItem == null) return;
                 int group = (cmbStGroupEdit.SelectedItem as Group).Id;
-                if (Id == 0 &&
-                   Name.Length == 0 &&
-                   Surname.Length == 0 &&
-                   Patronymic.Length == 0) return;
+                if (Name.Length == 0 &&
+                    Surname.Length == 0 &&
+                    Patronymic.Length == 0) return;
 
                 NpgsqlCommand command = dbConnect.GetCommand("UPDATE \"Student\" SET \"Id\" = @id,\"Name\" = @name,\"Surname\" = @surname,\"Patronymic\" = @patronymic,\"Group\" = @group WHERE \"Id\" = @id");
                 command.Parameters.AddWithValue("@id", NpgsqlDbType.Integer, Id);

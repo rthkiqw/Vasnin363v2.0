@@ -34,5 +34,30 @@ namespace Study
 
             MainFrame.Navigate(PageControl.main_page);
         }
+
+        private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == System.Windows.Input.MouseButtonState.Pressed)
+                DragMove();
+
+        }
+
+        private void MinimizeWindow_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.WindowState = WindowState.Minimized;
+        }
+
+        private void StateWindow_Click(object sender, RoutedEventArgs e)
+        {
+            if(Application.Current.MainWindow.WindowState != WindowState.Maximized)
+                Application.Current.MainWindow.WindowState = WindowState.Maximized;
+            else
+                Application.Current.MainWindow.WindowState = WindowState.Normal;
+        }
+
+        private void ShutDownWindow_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
