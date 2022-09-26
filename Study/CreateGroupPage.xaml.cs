@@ -41,11 +41,11 @@ namespace Study
 
             Binding binding3 = new Binding();
             binding3.Source = Specialities;
-            cmbGrSpecEdit.ItemsSource= Specialities;
+            cmbGrSpecEdit.ItemsSource = Specialities;
 
-            //LoadGroups();
-            //LoadCourses();
-           // LoadSpec();
+            LoadGroups();
+            LoadCourses();
+            LoadSpec();
         }
         private void AddGroup(object sender, RoutedEventArgs e)
         {
@@ -71,7 +71,7 @@ namespace Study
             tbGropId.Clear();
             cmbGCourseId.SelectedItem = null;
             cmbGSpecId.SelectedItem = null;
-            //LoadGroups();
+            LoadGroups();
         }
 
         private void FirstPage(object sender, RoutedEventArgs e)
@@ -92,6 +92,12 @@ namespace Study
         {
             NavigationService.Navigate(PageControl.createSpec);
         }
+
+        private void GoToAddEmployeePage(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(PageControl.AddEmployeePage);
+        }
+
         private void LoadCourses()
         {
             Courses.Clear();
@@ -150,7 +156,7 @@ namespace Study
             try
             {
                 int SpecId = (cmbGrSpecEdit.SelectedItem as Speciality).Id;
-                int GroupId =(lbGroups.SelectedItem as Group).Id;
+                int GroupId = (lbGroups.SelectedItem as Group).Id;
                 if (cmbGrSpecEdit.SelectedItem == null) return;
 
                 NpgsqlCommand command = dbConnect.GetCommand("UPDATE \"Group\" SET \"Speciality\" = @speciality WHERE \"Id\" = @id");

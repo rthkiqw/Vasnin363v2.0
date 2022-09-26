@@ -29,7 +29,7 @@ namespace Study
         {
             InitializeComponent();
             DataContext = this;
-            //LoadSpec();
+            LoadSpec();
         }
 
         private void AddSpec(object sender, RoutedEventArgs e)
@@ -51,7 +51,7 @@ namespace Study
             }
             tbSpecId.Clear();
             tbSpecName.Clear();
-            //LoadSpec();
+            LoadSpec();
         }
         private void FirstPage(object sender, RoutedEventArgs e)
         {
@@ -71,6 +71,11 @@ namespace Study
         {
             NavigationService.Navigate(PageControl.createSpec);
         }
+        private void GoToAddEmployeePage(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(PageControl.AddEmployeePage);
+        }
+
         private void LoadSpec()
         {
             Specialities.Clear();

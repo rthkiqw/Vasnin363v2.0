@@ -45,10 +45,10 @@
         </GroupBox>
         <StackPanel VerticalAlignment="Center" Grid.Column="3">
             <Label HorizontalAlignment="Center">Навигация</Label>
-            <Button Click="FirstPage" Margin="5">Главная</Button>
             <Button Click="StudPage" Margin="5">Новый Студент</Button>
             <Button Click="GrPage" Margin="5">Новая группа</Button>
             <Button Click="SpecPage" Margin="5">Новая специальность</Button>
+            <Button Click="GoToAddEmployeePage" Margin="5">Новый сотрудник</Button>
         </StackPanel>
     </Grid>
 </Page>

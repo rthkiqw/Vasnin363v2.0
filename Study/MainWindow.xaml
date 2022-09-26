@@ -20,6 +20,7 @@
                 <Label Grid.Row="0" Foreground="Gray" FontWeight="SemiBold" FontSize="9">KTK</Label>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <Button
+                        Style="{StaticResource ControlPannel_Button}"
                         x:Name="MinimizeButton"
                         Click="MinimizeWindow_Click"
                         Foreground="LightGray"
@@ -33,6 +34,7 @@
                     </Button>
 
                     <Button
+                        Style="{StaticResource ControlPannel_Button}"
                         x:Name="StateButton"
                         Click="StateWindow_Click"
                         Foreground="LightGray"
@@ -44,6 +46,7 @@
                     </Button>
 
                     <Button
+                        Style="{StaticResource ControlPannel_Button}"
                         x:Name="ShutDownButton"
                         Click="ShutDownWindow_Click"
                         Foreground="LightGray"

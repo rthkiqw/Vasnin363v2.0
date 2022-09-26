@@ -8,6 +8,37 @@ namespace Study
 {
     public class PageControl
     {
+        private static AddEmployeePage addEmployeePage;
+        public static AddEmployeePage AddEmployeePage
+        {
+            get
+            {
+                if (addEmployeePage == null)
+                    addEmployeePage = new AddEmployeePage();
+                return addEmployeePage;
+            }
+        }
+        private static CreateAccPage createacc;
+        public static CreateAccPage CreateAccPage
+        {
+            get
+            {
+                if (createacc == null)
+                    createacc = new CreateAccPage();
+                return createacc;
+            }
+        }
+        private static Authorization authorization;
+        public static Authorization Authorization
+        {
+            get
+            {
+                if(authorization == null)
+                    authorization = new Authorization();
+                return authorization;
+            }
+        }
+
         private static MainPage mainPage;
         public static MainPage main_page
         {

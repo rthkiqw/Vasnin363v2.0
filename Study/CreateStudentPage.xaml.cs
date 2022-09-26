@@ -33,12 +33,20 @@ namespace Study
         {
             InitializeComponent();
             DataContext = this;
-            //LoadGroups();
-            //LoadStuds();
+            LoadGroups();
+            LoadStuds();
             Binding binding = new Binding();
             binding.Source = Groups;
             cmbStGroup.ItemsSource = Groups;
             cmbStGroupEdit.ItemsSource = Groups;
+
+            //cmbStGroup.SetBinding(ComboBox.ItemsSourceProperty, binding);
+            //Binding binding1 = new Binding();
+            //binding1.Source = Specialities;
+            //cmbGSpecId.SetBinding(ComboBox.ItemsSourceProperty, binding1);
+            //Binding binding2 = new Binding();
+            //binding2.Source = Courses;
+            //cmbGCourseId.SetBinding(ComboBox.ItemsSourceProperty, binding2);
         }
         private void AddStudent(object sender, RoutedEventArgs e)
         {
@@ -72,7 +80,7 @@ namespace Study
             tbStudentSurname.Clear();
             tbStudentPatronymic.Clear();
             cmbStGroup.SelectedItem = null;
-            //LoadStuds();
+            LoadStuds();
         }
         private void FirstPage(object sender, RoutedEventArgs e)
         {
@@ -92,6 +100,11 @@ namespace Study
         {
             NavigationService.Navigate(PageControl.createSpec);
         }
+        private void GoToAddEmployeePage(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(PageControl.AddEmployeePage);
+        }
+
         private void LoadGroups()
         {
             Groups.Clear();

@@ -9,9 +9,32 @@
             <Setter Property="Background" Value="#303030"/>
         </Style>
 
+        <Style x:Key="Authorization" TargetType="Label">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Foreground" Value="MintCream"/>
+        </Style>
+
+        <Style x:Key="ControlPannel_Button" TargetType="{x:Type Button}">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="buttonBorder">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"></ContentPresenter>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="buttonBorder" Property="Background" Value="Gray"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style x:Key="ListBoxColor" TargetType="{x:Type TextBlock}">
             <Setter Property="Foreground" Value="MintCream"/>
-            
+
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="BorderThickness" Value="0"/>
@@ -21,11 +44,15 @@
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Cursor" Value="Arrow"/>
-                </Trigger>
-            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="PasswordBox">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="Gray"/>
+            <Setter Property="Foreground" Value="MintCream"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
         </Style>
 
         <Style TargetType="ComboBox">
@@ -108,7 +135,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
-       
+
+
     </Application.Resources>
 </Application>

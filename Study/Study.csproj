@@ -101,8 +101,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddEmployeePage.xaml.cs">
+      <DependentUpon>AddEmployeePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Authorization.xaml.cs">
+      <DependentUpon>Authorization.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Class1.cs" />
     <Compile Include="Course.cs" />
+    <Compile Include="CreateAccPage.xaml.cs">
+      <DependentUpon>CreateAccPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CreateGroupPage.xaml.cs">
       <DependentUpon>CreateGroupPage.xaml</DependentUpon>
     </Compile>
@@ -110,6 +119,7 @@
       <DependentUpon>CreateStudentPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="dbConnect.cs" />
+    <Compile Include="Employee.cs" />
     <Compile Include="Group.cs" />
     <Compile Include="CreateSpecialityPage.xaml.cs">
       <DependentUpon>CreateSpecialityPage.xaml</DependentUpon>
@@ -119,6 +129,18 @@
     </Compile>
     <Compile Include="PageControl.cs" />
     <Compile Include="Student.cs" />
+    <Page Include="AddEmployeePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Authorization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateAccPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CreateGroupPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
