@@ -10,14 +10,8 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
         <Image Margin="10" Source="Images/logo_ktk.png"></Image>
-        <StackPanel VerticalAlignment="Center" Grid.Column="1">
-            <Button Click="StudPage" Margin="5">Новый Студент</Button>
-            <Button Click="GrPage" Margin="5">Новая группа</Button>
-            <Button Click="SpecPage" Margin="5">Новая специальность</Button>
-        </StackPanel>
     </Grid>
 </Page>

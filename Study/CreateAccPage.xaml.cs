@@ -36,7 +36,9 @@ namespace Study
         {
             try
             {
-                string admPosition = "Admin";
+                
+
+                string role = "Админ";
                 string name = tbCreateName.Text.Trim();
                 string surname = tbCreateSurname.Text.Trim();
                 string phone = tbCreateLogin.Text.Trim();
@@ -50,6 +52,7 @@ namespace Study
                 else
                 {
                     MessageBox.Show("Не совпадают пароли!");
+                    return;
                 }
 
                 NpgsqlCommand command = dbConnect.GetCommand("INSERT INTO employees(phone,surname,name,password,position) VALUES (@phone,@surname,@name,@password,@position)");
@@ -57,21 +60,15 @@ namespace Study
                 command.Parameters.AddWithValue("@name", NpgsqlDbType.Varchar, surname);
                 command.Parameters.AddWithValue("@surname", NpgsqlDbType.Varchar, name);
                 command.Parameters.AddWithValue("@password", NpgsqlDbType.Varchar, password);
-                command.Parameters.AddWithValue("@position", NpgsqlDbType.Varchar, admPosition);
+                command.Parameters.AddWithValue("@position", NpgsqlDbType.Varchar, role);
                 int result = command.ExecuteNonQuery();
-                NavigationService.Navigate(PageControl.main_page);
+
+                NavigationService.Navigate(PageControl.Authorization);
+                PageControl.Authorization.RoleChecker(role);
             }
             catch (Exception error)
             {
                 MessageBox.Show("some errors here -> " + error.Message);
-            }
-        }
-
-        private void tbCreateName_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Down)
-            {
-                tbCreateSurname.Focus();
             }
         }
     }

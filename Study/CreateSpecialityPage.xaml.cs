@@ -91,20 +91,20 @@ namespace Study
             result.Close();
 
         }
-
+        //ДОРАБОТАТЬ РЕДАКТИРОВАНИЕ
         private void SaveSpecEditions(object sender, RoutedEventArgs e)
         {
             spSpecEditor.IsEnabled = false;
             try
             {
-                int Id = Convert.ToInt32(tbSpecIdEdit.Text.Trim());
+                //int Id = Convert.ToInt32(tbSpecIdEdit.Text.Trim());
                 string Name = tbSpecNameEdit.Text.Trim();
 
                 if (tbSpecIdEdit == null &&
                     tbSpecNameEdit.Text.Length == 0) return;
 
-                NpgsqlCommand command = dbConnect.GetCommand("UPDATE \"Specialties\" SET \"Id\" = @id,\"Name\" = @name WHERE \"Id\" = @id");
-                command.Parameters.AddWithValue("@id", NpgsqlDbType.Integer, Id);
+                NpgsqlCommand command = dbConnect.GetCommand("UPDATE \"Speciality\" SET \"Name\" = @name WHERE \"Id\" = @id");
+                command.Parameters.AddWithValue("@id", NpgsqlDbType.Integer, (lbSpecialties.SelectedItem as Speciality).Id);
                 command.Parameters.AddWithValue("@name", NpgsqlDbType.Varchar, Name);
                 int result = command.ExecuteNonQuery();
             }
@@ -112,6 +112,11 @@ namespace Study
             {
                 MessageBox.Show("somme errors here " + ex.Message);
             }
+        }
+
+        private void lbSpecs_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            spSpecEditor.IsEnabled = true;
         }
     }
 }

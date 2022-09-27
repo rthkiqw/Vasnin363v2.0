@@ -13,22 +13,25 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
         <GroupBox Grid.Column="1" Header="Редактирование">
-            <StackPanel Name="spGroupEditor" IsEnabled="False" DataContext="{Binding Groups}" Margin="10,0,10,0">
+            <StackPanel Name="spGroupEditor" IsEnabled="False" Margin="10,0,10,0">
                 <Label>Код специальности</Label>
-                <ComboBox Name="cmbGrSpecEdit">
+                <ComboBox Name="cmbGrSpecEdit" SelectedItem="{Binding ElementName=lbGroups, Path=SelectedItem.speciality}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
-                            <ComboBoxItem Content="{Binding Id,UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock>
+                                <Run Text="{Binding Id,UpdateSourceTrigger=PropertyChanged}"></Run>
+                                <Run Text="{Binding Name,UpdateSourceTrigger=PropertyChanged}"></Run>
+                            </TextBlock>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
                 <Button Click="SaveGroupEditions" Grid.Column="1" Grid.Row="2" Margin="0,20" >Сохранить</Button>
             </StackPanel>
         </GroupBox>
-        <ListBox SelectionChanged="lbGroups_SelectionChanged" Name="lbGroups" Margin="10" Grid.Column="0" ItemsSource="{Binding Groups}">
+        <GroupBox Grid.Column="0" Header="Группы">
+        <ListBox SelectionChanged="lbGroups_SelectionChanged" Name="lbGroups" Margin="10" ItemsSource="{Binding Groups}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Style="{DynamicResource ListBoxColor}">
@@ -37,35 +40,29 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        </GroupBox>
         <GroupBox Grid.Column="2" Margin="10,0.5" Header="Создание новой группы">
             <StackPanel Margin="10,0,10,0" DataContext="{Binding Group}">
                 <Label >Введите номер группы:</Label>
                 <TextBox Text="{Binding Id}" Name="tbGropId" ></TextBox>
                 <Label>Код специальности</Label>
-                <ComboBox Name="cmbGSpecId">
+                <ComboBox Name="cmbGSpecId" SelectedItem="{Binding speciality}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
-                            <ComboBoxItem Content="{Binding Id}"/>
+                            <TextBlock Text="{Binding Id}"/>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
                 <Label >Введите номер курса группы</Label>
-                <ComboBox Text="{Binding Course}" Name="cmbGCourseId">
+                <ComboBox Name="cmbGCourseId" SelectedItem="{Binding course}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
-                            <ComboBoxItem Content="{Binding Id}"/>
+                            <TextBlock Text="{Binding Id}"/>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
                 <Button Click="AddGroup" Grid.Column="0"  Margin="0,20,0,0">Создать группу</Button>
             </StackPanel>
         </GroupBox>
-        <StackPanel VerticalAlignment="Center" Grid.Column="3">
-            <Label HorizontalAlignment="Center">Навигация</Label>
-            <Button Click="StudPage" Margin="5">Новый Студент</Button>
-            <Button Click="GrPage" Margin="5">Новая группа</Button>
-            <Button Click="SpecPage" Margin="5">Новая специальность</Button>
-            <Button Click="GoToAddEmployeePage" Margin="5">Новый сотрудник</Button>
-        </StackPanel>
     </Grid>
 </Page>

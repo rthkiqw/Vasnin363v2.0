@@ -82,6 +82,8 @@ namespace Study
             cmbStGroup.SelectedItem = null;
             LoadStuds();
         }
+
+        #region Navigation
         private void FirstPage(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(PageControl.main_page);
@@ -104,7 +106,9 @@ namespace Study
         {
             NavigationService.Navigate(PageControl.AddEmployeePage);
         }
+        #endregion
 
+        #region Loaders
         private void LoadGroups()
         {
             Groups.Clear();
@@ -140,6 +144,7 @@ namespace Study
             result.Close();
 
         }
+        #endregion
 
         private void SaveEditionsButton(object sender, RoutedEventArgs e)
         {

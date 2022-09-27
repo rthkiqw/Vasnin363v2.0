@@ -10,14 +10,18 @@
         AllowsTransparency="True"
         ResizeMode="CanResizeWithGrip">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="0" MouseDown="Border_MouseDown">
+        <Border Grid.ColumnSpan="2" Grid.Row="0" MouseDown="Border_MouseDown">
             <Grid Background="#252525" HorizontalAlignment="Stretch">
-                <Label Grid.Row="0" Foreground="Gray" FontWeight="SemiBold" FontSize="9">KTK</Label>
+                <Label  Grid.Row="0" Foreground="Gray" FontWeight="SemiBold" FontSize="9">KTK</Label>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <Button
                         Style="{StaticResource ControlPannel_Button}"
@@ -46,7 +50,7 @@
                     </Button>
 
                     <Button
-                        Style="{StaticResource ControlPannel_Button}"
+                        Style="{StaticResource ShutDownApp_Button}"
                         x:Name="ShutDownButton"
                         Click="ShutDownWindow_Click"
                         Foreground="LightGray"
@@ -59,6 +63,14 @@
                 </StackPanel>
             </Grid>
         </Border>
+
+        <StackPanel VerticalAlignment="Center" Grid.Row="1" Grid.Column="1">
+            <Button Name = "GoToStudPage_Button" Click="StudPage" Margin="5">Новый Студент</Button>
+            <Button Name = "GoToGroupPage_Button" Click="GrPage" Margin="5">Новая группа</Button>
+            <Button Name = "GoToSpecialityPage_Button" Click="SpecPage" Margin="5">Новая специальность</Button>
+            <Button Name = "GoToEmployeePage_Button" Click="GoToAddEmployeePage" Margin="5">Новый сотрудник</Button>
+        </StackPanel>
+
         <Frame Grid.Row="1" Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>
     </Grid>
 </Window>

@@ -23,7 +23,7 @@
         <StackPanel DataContext="{Binding Employee}" Grid.Row="1" Margin="0,0,0,10" Background="#404040" Grid.Column="1">
             <Label HorizontalAlignment="Center" Style="{StaticResource Authorization}">Регистрация</Label>
             <Label Style="{StaticResource Authorization}">Введите имя:</Label>
-            <TextBox KeyDown="tbCreateName_KeyDown" Text="{Binding Name}" Name="tbCreateName"></TextBox>
+            <TextBox Text="{Binding Name}" Name="tbCreateName"></TextBox>
             <Label Style="{StaticResource Authorization}">Введите фамилию:</Label>
             <TextBox Text="{Binding Surname}" Name="tbCreateSurname"></TextBox>
             <Label Style="{StaticResource Authorization}">Введите номер телефона:</Label>

@@ -31,21 +31,23 @@ namespace Study
         {
             InitializeComponent();
             DataContext = this;
+
+            LoadCourses();
+            LoadSpec();
+            LoadGroups();
+
             Binding binding = new Binding();
             binding.Source = Courses;
-            cmbGCourseId.ItemsSource = Courses;
+            cmbGCourseId.SetBinding(ComboBox.ItemsSourceProperty, binding);
 
             Binding binding1 = new Binding();
-            binding.Source = Specialities;
-            cmbGSpecId.ItemsSource = Specialities;
+            binding1.Source = Specialities;
+            cmbGSpecId.SetBinding(ComboBox.ItemsSourceProperty, binding1);
 
             Binding binding3 = new Binding();
             binding3.Source = Specialities;
-            cmbGrSpecEdit.ItemsSource = Specialities;
+            cmbGrSpecEdit.SetBinding(ComboBox.ItemsSourceProperty, binding3);
 
-            LoadGroups();
-            LoadCourses();
-            LoadSpec();
         }
         private void AddGroup(object sender, RoutedEventArgs e)
         {
@@ -98,6 +100,8 @@ namespace Study
             NavigationService.Navigate(PageControl.AddEmployeePage);
         }
 
+        #region Loaders
+
         private void LoadCourses()
         {
             Courses.Clear();
@@ -140,14 +144,15 @@ namespace Study
                     int specId = result.GetInt32(1);
                     int courseId = result.GetInt32(2);
                     var scpecialty = Specialities.Where(x => x.Id == specId).FirstOrDefault();
-                    var couse = Courses.Where(x => x.Id == courseId).FirstOrDefault();
+                    var course = Courses.Where(x => x.Id == courseId).FirstOrDefault();
 
-                    Groups.Add(new Group(result.GetInt32(0), scpecialty, couse));
+                    Groups.Add(new Group(result.GetInt32(0), scpecialty, course));
                 }
             }
             result.Close();
 
         }
+        #endregion
 
         private void SaveGroupEditions(object sender, RoutedEventArgs e)
         {

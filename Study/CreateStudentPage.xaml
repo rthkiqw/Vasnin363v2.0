@@ -13,7 +13,6 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
         <ListBox Name="lbStudents" SelectionChanged="StudentEditor" Margin="10" Grid.Column="0" ItemsSource="{Binding Students}">
             <ListBox.ItemTemplate>
@@ -72,12 +71,5 @@
                 <Button Click="AddStudent" Grid.Column="1" Grid.Row="2" Margin="0,20" >Новый студент</Button>
             </StackPanel>
         </GroupBox>
-        <StackPanel VerticalAlignment="Center" Grid.Column="3">
-            <Label HorizontalAlignment="Center">Навигация</Label>
-            <Button Click="StudPage" Margin="5">Новый Студент</Button>
-            <Button Click="GrPage" Margin="5">Новая группа</Button>
-            <Button Click="SpecPage" Margin="5">Новая специальность</Button>
-            <Button Click="GoToAddEmployeePage" Margin="5">Новый сотрудник</Button>
-        </StackPanel>
     </Grid>
 </Page>

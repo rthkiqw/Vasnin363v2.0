@@ -14,6 +14,24 @@
             <Setter Property="Foreground" Value="MintCream"/>
         </Style>
 
+        <Style x:Key="ShutDownApp_Button" TargetType="{x:Type Button}">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="buttonBorder2">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"></ContentPresenter>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="buttonBorder2" Property="Background" Value="Darkred"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style x:Key="ControlPannel_Button" TargetType="{x:Type Button}">
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Template">
@@ -84,11 +102,11 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <SolidColorBrush x:Key="Button.Static.Background" Color="#ff6584"/>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFFFF0"/>
         <SolidColorBrush x:Key="Button.Static.Border" Color="#404040"/>
         <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
-        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="MintCream"/>
-        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#ff6567"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#303030"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="LightGray"/>
         <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
         <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
         <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
@@ -101,7 +119,7 @@
             <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Foreground" Value="MintCream"/>
+            <Setter Property="Foreground" Value="#303030"/>
             <Setter Property="BorderThickness" Value="1.5"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>

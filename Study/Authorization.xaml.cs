@@ -38,9 +38,13 @@ namespace Study
             NpgsqlDataReader result = command.ExecuteReader();
             if (result.HasRows)
             {
-                result.Read();
-                NavigationService.Navigate(PageControl.main_page);
+                string role = "";
+                while (result.Read())
+                {
+                    role = result.GetString(2);
+                }
 
+                RoleChecker(role);
             }
             else
             {
@@ -50,7 +54,33 @@ namespace Study
                 {
                     MessageBox.Show("Неверный логин или пароль");
                 }
-                result.Close();
+            }
+            result.Close();
+        }
+
+        public void RoleChecker(string role)
+        {
+            if(role == "Админ")
+            {
+                MainWindow.toStudPage.Visibility = Visibility.Visible;
+                MainWindow.toGrPage.Visibility = Visibility.Visible;
+                MainWindow.toSpecPage.Visibility = Visibility.Visible;
+                MainWindow.toEmpPage.Visibility = Visibility.Visible;
+
+                MainWindow.AppFrame.Navigate(PageControl.main_page);
+            }
+            if (role == "Учебная часть")
+            {
+                MainWindow.toGrPage.Visibility = Visibility.Visible;
+                MainWindow.toSpecPage.Visibility = Visibility.Visible;
+
+                MainWindow.AppFrame.Navigate(PageControl.main_page);
+            }
+            if(role == "Приемная комиссия")
+            {
+                MainWindow.toStudPage.Visibility = Visibility.Visible;
+
+                MainWindow.AppFrame.Navigate(PageControl.main_page);
             }
         }
 

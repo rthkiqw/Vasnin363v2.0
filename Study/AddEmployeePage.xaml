@@ -15,6 +15,7 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
+        <GroupBox Header="Сотрудники">
         <ListBox Name="lbEmployees" SelectionChanged="CurrentEmployeeEdit" Margin="10" Grid.Column="0" ItemsSource="{Binding Employees}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -25,63 +26,45 @@
                         <Run FontSize="15" Text="{Binding Surname}"/>
                         <Run FontSize="15" Text="{Binding Name}"/>
                         <LineBreak/>
-                        <Run Foreground="Gray" FontSize="12" Text="телефон(логин):"/>
-                        <Run Foreground="Gray" FontSize="12" Text="{Binding Phone}"/>
+                        <Run Foreground="Yellow" FontSize="12" Text="телефон(логин):"/>
+                        <Run Foreground="Yellow" FontSize="12" Text="{Binding Login}"/>
                         <LineBreak/>
-                        <Run Foreground="Gray" FontSize="12" Text="пароль:"/>
-                        <Run Foreground="Gray" FontSize="12" Text="{Binding Password}"/>
+                        <Run Foreground="Red" FontSize="12" Text="пароль:"/>
+                        <Run Foreground="Red" FontSize="12" Text="{Binding Password}"/>
                     </TextBlock>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        </GroupBox>
         <GroupBox Grid.Column="1" Header="Редактирование">
             <StackPanel Name="spEmployeesEditor" IsEnabled="False" DataContext="{Binding Employees}" Margin="10,0,10,0">
                 <Label>Введите имя сотрудника:</Label>
                 <TextBox Name="tbEmpNameEdit" Text="{Binding ElementName=lbEmployees,Path=SelectedItem.Name,UpdateSourceTrigger=PropertyChanged}"/>
                 <Label>Введите фамилию сотрудника:</Label>
                 <TextBox Name="tbEmpSurnameEdit" Text="{Binding ElementName=lbEmployees,Path=SelectedItem.Surname,UpdateSourceTrigger=PropertyChanged}"/>
-                <Label>Введите номер телефона:</Label>
-                <TextBox Name="tbEmpPhoneEdit" Text="{Binding ElementName=lbEmployees,Path=SelectedItem.Phone,UpdateSourceTrigger=PropertyChanged}"/>
+                <Label>Номер телефона:</Label>
+                <TextBox IsEnabled="False" Name="tbEmpPhoneEdit" Text="{Binding ElementName=lbEmployees,Path=SelectedItem.Login,UpdateSourceTrigger=PropertyChanged}"/>
                 <Label>Введите пароль:</Label>
                 <TextBox Name="tbEmpPassEdit" Text="{Binding ElementName=lbEmployees,Path=SelectedItem.Password,UpdateSourceTrigger=PropertyChanged}"/>
-                <Label>Выберите группу:</Label>
-                <ComboBox Name="cmbEmpPosEdit">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <ComboBoxItem Content="{Binding Position,UpdateSourceTrigger=PropertyChanged}"/>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
+                <Label>Выберите должность:</Label>
+                <ComboBox Name="cmbEmpPosEdit" SelectedItem="{Binding ElementName=lbEmployees, Path=SelectedItem.Position}"></ComboBox>
                 <Button Click="SaveEditionsButton" Grid.Column="1" Grid.Row="2" Margin="0,20" >Сохранить</Button>
             </StackPanel>
         </GroupBox>
         <GroupBox Grid.Column="2" Header="Новый сотрудник">
-            <StackPanel Margin="10,0,10,0" Grid.Column="1" DataContext="{Binding Employees}">
+            <StackPanel Margin="10,0,10,0" Grid.Column="1" DataContext="{Binding Employee}">
                 <Label>Введите имя:</Label>
                 <TextBox Text="{Binding Name}" Name="tbEmpName"></TextBox>
                 <Label>Введите фамили.:</Label>
                 <TextBox Text="{Binding Surname}" Name="tbEmpSurname"></TextBox>
                 <Label>Введите номер телефона:</Label>
-                <TextBox Text="{Binding Phone}" Name="tbStudentSurname"></TextBox>
+                <TextBox Text="{Binding Login}" Name="tbEmpLogin"></TextBox>
                 <Label>Введите пароль:</Label>
-                <TextBox Text="{Binding Password}" Name="tbStudentPatronymic"></TextBox>
+                <TextBox Text="{Binding Password}" Name="tbEmpPassword"></TextBox>
                 <Label>Выберите должность:</Label>
-                <ComboBox Name="cmbEmpPos">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <ComboBoxItem Content="{Binding Position,UpdateSourceTrigger=PropertyChanged}"/>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
-                <Button Click="AddStudent" Grid.Column="1" Grid.Row="2" Margin="0,20" >Новый сотрудник</Button>
+                <ComboBox Name="cmbEmpPos"></ComboBox>
+                <Button Click="AddEmployee" Grid.Column="1" Grid.Row="2" Margin="0,20" >Новый сотрудник</Button>
             </StackPanel>
         </GroupBox>
-        <StackPanel VerticalAlignment="Center" Grid.Column="3">
-            <Label HorizontalAlignment="Center">Навигация</Label>
-            <Button Click="StudPage" Margin="5">Новый Студент</Button>
-            <Button Click="GrPage" Margin="5">Новая группа</Button>
-            <Button Click="SpecPage" Margin="5">Новая специальность</Button>
-            <Button Click="GoToAddEmployeePage" Margin="5">Новый сотрудник</Button>
-        </StackPanel>
     </Grid>
 </Page>
