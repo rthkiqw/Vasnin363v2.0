@@ -118,6 +118,7 @@
     <Compile Include="CreateStudentPage.xaml.cs">
       <DependentUpon>CreateStudentPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataLoader.cs" />
     <Compile Include="dbConnect.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Group.cs" />

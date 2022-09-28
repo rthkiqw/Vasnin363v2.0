@@ -15,6 +15,10 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
         <GroupBox Header="Сотрудники">
         <ListBox Name="lbEmployees" SelectionChanged="CurrentEmployeeEdit" Margin="10" Grid.Column="0" ItemsSource="{Binding Employees}">
             <ListBox.ItemTemplate>
@@ -66,5 +70,6 @@
                 <Button Click="AddEmployee" Grid.Column="1" Grid.Row="2" Margin="0,20" >Новый сотрудник</Button>
             </StackPanel>
         </GroupBox>
+        <Button IsEnabled="False" Name="remove_Button" Click="EmployeeRemove" Grid.Row="1" Grid.Column="0" FontSize="12" Content="Удалить" Height="25"></Button>
     </Grid>
 </Page>

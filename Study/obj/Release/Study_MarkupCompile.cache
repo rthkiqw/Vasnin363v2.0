@@ -4,15 +4,15 @@
 winexe
 C#
 .cs
-C:\Users\student.IT-KTK\Source\Repos\Vasnin363v2.0\Study\obj\Debug\
+C:\Users\student.IT-KTK\Source\Repos\Vasnin363v2.0\Study\obj\Release\
 Study
 none
 false
-DEBUG;TRACE
+TRACE
 C:\Users\student.IT-KTK\Source\Repos\Vasnin363v2.0\Study\App.xaml
 81975259868
 
-21-80759448
+20-2002537569
 30-221097403
 AddEmployeePage.xaml;Authorization.xaml;CreateAccPage.xaml;CreateGroupPage.xaml;CreateStudentPage.xaml;MainPage.xaml;MainWindow.xaml;CreateSpecialityPage.xaml;
 

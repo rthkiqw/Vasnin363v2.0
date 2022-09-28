@@ -47,6 +47,7 @@ namespace Study
         private void CurrentEmployeeEdit(object sender, SelectionChangedEventArgs e)
         {
             spEmployeesEditor.IsEnabled = true;
+            remove_Button.IsEnabled = true;
         }
 
         private void SaveEditionsButton(object sender, RoutedEventArgs e)
@@ -60,7 +61,7 @@ namespace Study
                 if (cmbEmpPosEdit.SelectedItem == null) return;
                 string Position = (string)cmbEmpPosEdit.SelectedItem;
                 string Password = tbEmpPassEdit.Text.Trim();
-                
+
                 NpgsqlCommand command = dbConnect.GetCommand("UPDATE employees SET name = @name,surname = @surname,position = @position,password = @password WHERE phone = @phone");
                 command.Parameters.AddWithValue("@phone", NpgsqlDbType.Varchar, Login);
                 command.Parameters.AddWithValue("@name", NpgsqlDbType.Varchar, Name);
@@ -136,6 +137,30 @@ namespace Study
             }
             result.Close();
 
+        }
+
+        private void EmployeeRemove(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                lbEmployees.Items.Remove(lbEmployees.SelectedItem);
+
+                if (lbEmployees.SelectedItem == null) return;
+
+                string Phone = (lbEmployees.SelectedItem as Employee).Login;
+                NpgsqlCommand command = dbConnect.GetCommand("DELETE FROM employees WHERE phone = @phone");
+                command.Parameters.AddWithValue("@phone", NpgsqlDbType.Varchar, Phone);
+                int result = command.ExecuteNonQuery();
+
+                LoadEmployees();
+
+                remove_Button.Background = Brushes.Red;
+            }
+            catch (Exception ex)
+            {
+                remove_Button.Background = Brushes.Red;
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
