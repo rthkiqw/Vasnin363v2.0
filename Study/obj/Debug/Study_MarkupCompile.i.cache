@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\rthkiqw\source\repos\Vasnin363v2.0\Study\App.xaml
-81975259868
+8288360844
 
-21-80759448
+21-618980608
 30-694402293
-AddEmployeePage.xaml;Authorization.xaml;CreateAccPage.xaml;CreateGroupPage.xaml;CreateStudentPage.xaml;MainPage.xaml;MainWindow.xaml;CreateSpecialityPage.xaml;
+pages\AddEmployeePage.xaml;pages\Authorization.xaml;pages\CreateAccPage.xaml;pages\CreateGroupPage.xaml;pages\CreateStudentPage.xaml;MainPage.xaml;MainWindow.xaml;pages\CreateSpecialityPage.xaml;
 
-False
+True
 

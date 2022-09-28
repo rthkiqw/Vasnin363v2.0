@@ -23,18 +23,16 @@ namespace Study
     /// </summary>
     public partial class CreateStudentPage : Page
     {
-        public ObservableCollection<Speciality> Specialities { get; set; } = new ObservableCollection<Speciality>();
+       
         public ObservableCollection<Group> Groups { get; set; } = new ObservableCollection<Group>();
         public Group Group { get; set; } = new Group();
-        public ObservableCollection<Course> Courses { get; set; } = new ObservableCollection<Course>();
-        public ObservableCollection<Student> Students { get; set; } = new ObservableCollection<Student>();
         public Student Student { get; set; } = new Student();
         public CreateStudentPage()
         {
             InitializeComponent();
             DataContext = this;
-            LoadGroups();
-            LoadStuds();
+            DataLoader.LoadGroups();
+            DataLoader.LoadStudents();
             Binding binding = new Binding();
             binding.Source = Groups;
             cmbStGroup.ItemsSource = Groups;
@@ -80,46 +78,8 @@ namespace Study
             tbStudentSurname.Clear();
             tbStudentPatronymic.Clear();
             cmbStGroup.SelectedItem = null;
-            LoadStuds();
+            DataLoader.LoadStudents();
         }
-
-        #region Loaders
-        private void LoadGroups()
-        {
-            Groups.Clear();
-            NpgsqlCommand command = dbConnect.GetCommand("Select \"Id\",\"Speciality\",\"Course\" FROM \"Group\" ORDER by \"Id\"");
-            NpgsqlDataReader result = command.ExecuteReader();
-            if (result.HasRows)
-            {
-                while (result.Read())
-                {
-                    int specId = result.GetInt32(1);
-                    int courseId = result.GetInt32(2);
-                    var scpecialty = Specialities.Where(x => x.Id == specId).FirstOrDefault();
-                    var course = Courses.Where(x => x.Id == courseId).FirstOrDefault();
-
-                    Groups.Add(new Group(result.GetInt32(0), scpecialty, course));
-                }
-            }
-            result.Close();
-
-        }
-        private void LoadStuds()
-        {
-            Students.Clear();
-            NpgsqlCommand command = dbConnect.GetCommand("Select \"Id\",\"Surname\",\"Name\",\"Patronymic\", \"Group\" FROM \"Student\" ORDER by \"Id\"");
-            NpgsqlDataReader result = command.ExecuteReader();
-            if (result.HasRows)
-            {
-                while (result.Read())
-                {
-                    Students.Add(new Student(result.GetInt32(0), result.GetString(1), result.GetString(2), result.GetString(3), result.GetInt32(4)));
-                }
-            }
-            result.Close();
-
-        }
-        #endregion
 
         private void SaveEditionsButton(object sender, RoutedEventArgs e)
         {

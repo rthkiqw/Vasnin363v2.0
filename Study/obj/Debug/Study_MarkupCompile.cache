@@ -4,28 +4,16 @@
 winexe
 C#
 .cs
-<<<<<<< HEAD
 C:\Users\rthkiqw\source\repos\Vasnin363v2.0\Study\obj\Debug\
-=======
-C:\Users\student.IT-KTK\Source\Repos\Vasnin363v2.0\Study\obj\Debug\
->>>>>>> 398a7baab8d8b17a8e14b39ce51dff18aa7e01fe
 Study
 none
 false
 DEBUG;TRACE
-<<<<<<< HEAD
 C:\Users\rthkiqw\source\repos\Vasnin363v2.0\Study\App.xaml
 81975259868
 
-191380638916
-30-694402293
-=======
-C:\Users\student.IT-KTK\Source\Repos\Vasnin363v2.0\Study\App.xaml
-81975259868
-
 20-2002537569
-30-221097403
->>>>>>> 398a7baab8d8b17a8e14b39ce51dff18aa7e01fe
+30-694402293
 AddEmployeePage.xaml;Authorization.xaml;CreateAccPage.xaml;CreateGroupPage.xaml;CreateStudentPage.xaml;MainPage.xaml;MainWindow.xaml;CreateSpecialityPage.xaml;
 
 False

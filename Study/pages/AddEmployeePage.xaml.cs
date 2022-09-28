@@ -31,9 +31,8 @@ namespace Study
             InitializeComponent();
             DataContext = this;
 
-            LoadEmployees();
-            LoadPositions();
-
+            DataLoader.LoadEmployees();
+            DataLoader.LoadPositions();
 
             Binding binding2 = new Binding();
             binding2.Source = Positions;
@@ -74,7 +73,7 @@ namespace Study
             {
                 MessageBox.Show("somme errors here " + ex.Message);
             }
-            LoadEmployees();
+            DataLoader.LoadEmployees();
         }
 
         private void AddEmployee(object sender, RoutedEventArgs e)
@@ -106,38 +105,9 @@ namespace Study
             tbEmpLogin.Clear();
             cmbEmpPos.SelectedItem = null;
             tbEmpPassword.Clear();
-            LoadEmployees();
+            DataLoader.LoadEmployees();
         }
-        private void LoadPositions()
-        {
-            Positions.Clear();
-            NpgsqlCommand command = dbConnect.GetCommand("Select Distinct position FROM employees GROUP BY position ORDER by position");
-            NpgsqlDataReader result = command.ExecuteReader();
-            if (result.HasRows)
-            {
-                while (result.Read())
-                {
-                    Positions.Add(result.GetString(0));
-                }
-            }
-            result.Close();
-
-        }
-        private void LoadEmployees()
-        {
-            Employees.Clear();
-            NpgsqlCommand command = dbConnect.GetCommand("Select phone,name,surname,position,password FROM employees ORDER by surname");
-            NpgsqlDataReader result = command.ExecuteReader();
-            if (result.HasRows)
-            {
-                while (result.Read())
-                {
-                    Employees.Add(new Employee(result.GetString(0), result.GetString(1), result.GetString(2), result.GetString(3), result.GetString(4)));
-                }
-            }
-            result.Close();
-
-        }
+        //Loaders has been removed
 
         private void EmployeeRemove(object sender, RoutedEventArgs e)
         {
@@ -152,7 +122,7 @@ namespace Study
                 command.Parameters.AddWithValue("@phone", NpgsqlDbType.Varchar, Phone);
                 int result = command.ExecuteNonQuery();
 
-                LoadEmployees();
+                DataLoader.LoadEmployees();
 
                 remove_Button.Background = Brushes.Red;
             }
