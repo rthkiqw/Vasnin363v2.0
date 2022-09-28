@@ -30,7 +30,7 @@ namespace Study
             AppFrame = MainFrame;
             DataContext = this;
 
-            dbConnect.Connect("10.14.206.27", "5432", "student", "1234", "study");
+            //dbConnect.Connect("10.14.206.27", "5432", "student", "1234", "study");
 
             toStudPage = GoToStudPage_Button;
             toGrPage = GoToGroupPage_Button;
@@ -42,7 +42,7 @@ namespace Study
             GoToSpecialityPage_Button.Visibility = Visibility.Collapsed;
             GoToEmployeePage_Button.Visibility = Visibility.Collapsed;
 
-            LoadEmployees();
+            //LoadEmployees();
             if (Employees.Count == 0)
             {
                 MainFrame.Navigate(PageControl.CreateAccPage);
@@ -120,5 +120,6 @@ namespace Study
             Application.Current.Shutdown();
         }
         #endregion
+
     }
 }

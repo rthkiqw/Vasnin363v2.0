@@ -76,30 +76,6 @@ namespace Study
             LoadGroups();
         }
 
-        private void FirstPage(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(PageControl.main_page);
-        }
-        private void StudPage(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(PageControl.createStudent);
-        }
-
-        private void GrPage(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(PageControl.createGroup);
-        }
-
-        private void SpecPage(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(PageControl.createSpec);
-        }
-
-        private void GoToAddEmployeePage(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(PageControl.AddEmployeePage);
-        }
-
         #region Loaders
 
         private void LoadCourses()

@@ -23,10 +23,10 @@
         <StackPanel DataContext="{Binding Employee}" Grid.Row="1" Margin="0,0,0,10" Background="#404040" Grid.Column="1">
             <Label HorizontalAlignment="Center" Style="{StaticResource Authorization}">Регистрация</Label>
             <Label Style="{StaticResource Authorization}">Введите имя:</Label>
-            <TextBox Text="{Binding Name}" Name="tbCreateName"></TextBox>
+            <TextBox BorderThickness="1" Text="{Binding Name}" Name="tbCreateName"/>
             <Label Style="{StaticResource Authorization}">Введите фамилию:</Label>
             <TextBox Text="{Binding Surname}" Name="tbCreateSurname"></TextBox>
-            <Label Style="{StaticResource Authorization}">Введите номер телефона:</Label>
+            <Label Style="{StaticResource Authorization}">Введите номер телефона (без "+7" или "8")</Label>
             <TextBox Text="{Binding Login}" Name="tbCreateLogin"></TextBox>
             <Label Style="{StaticResource Authorization}">Введите пароль:</Label>
             <TextBox Text="{Binding Password}" Name="tbCreatePass"></TextBox>

@@ -16,7 +16,7 @@ namespace Study
             string cs = string.Format("Server={0};Port={1};User ID={2};Password={3};DataBase={4}", host, port, user, pass, dbname);
 
             connection = new NpgsqlConnection(cs);
-            connection.Open();
+            //connection.Open();
         }
         public static NpgsqlCommand GetCommand(string sql)
         {
