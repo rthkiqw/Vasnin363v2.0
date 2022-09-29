@@ -23,7 +23,6 @@ namespace Study
     /// </summary>
     public partial class CreateGroupPage : Page
     {
-        public ObservableCollection<Group> Groups { get; set; } = new ObservableCollection<Group>();
         public ObservableCollection<Course> Courses { get; set; } = new ObservableCollection<Course>();
         public ObservableCollection<Speciality> Specialities { get; set; } = new ObservableCollection<Speciality>();
         public Group Group { get; set; } = new Group();
@@ -32,9 +31,9 @@ namespace Study
             InitializeComponent();
             DataContext = this;
 
-            LoadCourses();
-            LoadSpec();
-            LoadGroups();
+            DataLoader.LoadCourses();
+            DataLoader.LoadSpecialities();
+            DataLoader.LoadGroups();
 
             Binding binding = new Binding();
             binding.Source = Courses;
@@ -73,86 +72,8 @@ namespace Study
             tbGropId.Clear();
             cmbGCourseId.SelectedItem = null;
             cmbGSpecId.SelectedItem = null;
-            LoadGroups();
+            DataLoader.LoadGroups();
         }
-
-        private void FirstPage(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(PageControl.main_page);
-        }
-        private void StudPage(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(PageControl.createStudent);
-        }
-
-        private void GrPage(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(PageControl.createGroup);
-        }
-
-        private void SpecPage(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(PageControl.createSpec);
-        }
-
-        private void GoToAddEmployeePage(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(PageControl.AddEmployeePage);
-        }
-
-        #region Loaders
-
-        private void LoadCourses()
-        {
-            Courses.Clear();
-            NpgsqlCommand command = dbConnect.GetCommand("Select \"Id\" FROM \"Course\" ORDER by \"Id\"");
-            NpgsqlDataReader result = command.ExecuteReader();
-            if (result.HasRows)
-            {
-                while (result.Read())
-                {
-                    Courses.Add(new Course(result.GetInt32(0)));
-                }
-            }
-            result.Close();
-
-        }
-        private void LoadSpec()
-        {
-            Specialities.Clear();
-            NpgsqlCommand command = dbConnect.GetCommand("Select \"Id\",\"Name\" FROM \"Speciality\" ORDER by \"Id\"");
-            NpgsqlDataReader result = command.ExecuteReader();
-            if (result.HasRows)
-            {
-                while (result.Read())
-                {
-                    Specialities.Add(new Speciality(result.GetInt32(0), result.GetString(1)));
-                }
-            }
-            result.Close();
-
-        }
-        private void LoadGroups()
-        {
-            Groups.Clear();
-            NpgsqlCommand command = dbConnect.GetCommand("Select \"Id\",\"Speciality\",\"Course\" FROM \"Group\" ORDER by \"Id\"");
-            NpgsqlDataReader result = command.ExecuteReader();
-            if (result.HasRows)
-            {
-                while (result.Read())
-                {
-                    int specId = result.GetInt32(1);
-                    int courseId = result.GetInt32(2);
-                    var scpecialty = Specialities.Where(x => x.Id == specId).FirstOrDefault();
-                    var course = Courses.Where(x => x.Id == courseId).FirstOrDefault();
-
-                    Groups.Add(new Group(result.GetInt32(0), scpecialty, course));
-                }
-            }
-            result.Close();
-
-        }
-        #endregion
 
         private void SaveGroupEditions(object sender, RoutedEventArgs e)
         {

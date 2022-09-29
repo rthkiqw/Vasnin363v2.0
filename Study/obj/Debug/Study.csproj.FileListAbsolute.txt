@@ -220,3 +220,9 @@ C:\Users\student\Source\Repos\Vasnin363v2.0\Study\obj\Debug\CreateAccPage.g.cs
 C:\Users\student\Source\Repos\Vasnin363v2.0\Study\obj\Debug\CreateAccPage.baml
 C:\Users\student\source\repos\Vasnin363v2.0\Study\obj\Debug\AddEmployeePage.g.cs
 C:\Users\student\source\repos\Vasnin363v2.0\Study\obj\Debug\AddEmployeePage.baml
+C:\Users\rthkiqw\source\repos\Vasnin363v2.0\Study\obj\Debug\AddEmployeePage.g.cs
+C:\Users\rthkiqw\source\repos\Vasnin363v2.0\Study\obj\Debug\Authorization.g.cs
+C:\Users\rthkiqw\source\repos\Vasnin363v2.0\Study\obj\Debug\CreateAccPage.g.cs
+C:\Users\rthkiqw\source\repos\Vasnin363v2.0\Study\obj\Debug\AddEmployeePage.baml
+C:\Users\rthkiqw\source\repos\Vasnin363v2.0\Study\obj\Debug\Authorization.baml
+C:\Users\rthkiqw\source\repos\Vasnin363v2.0\Study\obj\Debug\CreateAccPage.baml

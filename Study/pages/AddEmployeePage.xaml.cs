@@ -31,9 +31,8 @@ namespace Study
             InitializeComponent();
             DataContext = this;
 
-            LoadEmployees();
-            LoadPositions();
-
+            DataLoader.LoadEmployees();
+            DataLoader.LoadPositions();
 
             Binding binding2 = new Binding();
             binding2.Source = Positions;
@@ -47,6 +46,7 @@ namespace Study
         private void CurrentEmployeeEdit(object sender, SelectionChangedEventArgs e)
         {
             spEmployeesEditor.IsEnabled = true;
+            remove_Button.IsEnabled = true;
         }
 
         private void SaveEditionsButton(object sender, RoutedEventArgs e)
@@ -60,7 +60,7 @@ namespace Study
                 if (cmbEmpPosEdit.SelectedItem == null) return;
                 string Position = (string)cmbEmpPosEdit.SelectedItem;
                 string Password = tbEmpPassEdit.Text.Trim();
-                
+
                 NpgsqlCommand command = dbConnect.GetCommand("UPDATE employees SET name = @name,surname = @surname,position = @position,password = @password WHERE phone = @phone");
                 command.Parameters.AddWithValue("@phone", NpgsqlDbType.Varchar, Login);
                 command.Parameters.AddWithValue("@name", NpgsqlDbType.Varchar, Name);
@@ -73,7 +73,7 @@ namespace Study
             {
                 MessageBox.Show("somme errors here " + ex.Message);
             }
-            LoadEmployees();
+            DataLoader.LoadEmployees();
         }
 
         private void AddEmployee(object sender, RoutedEventArgs e)
@@ -105,37 +105,32 @@ namespace Study
             tbEmpLogin.Clear();
             cmbEmpPos.SelectedItem = null;
             tbEmpPassword.Clear();
-            LoadEmployees();
+            DataLoader.LoadEmployees();
         }
-        private void LoadPositions()
-        {
-            Positions.Clear();
-            NpgsqlCommand command = dbConnect.GetCommand("Select Distinct position FROM employees GROUP BY position ORDER by position");
-            NpgsqlDataReader result = command.ExecuteReader();
-            if (result.HasRows)
-            {
-                while (result.Read())
-                {
-                    Positions.Add(result.GetString(0));
-                }
-            }
-            result.Close();
+        //Loaders has been removed
 
-        }
-        private void LoadEmployees()
+        private void EmployeeRemove(object sender, RoutedEventArgs e)
         {
-            Employees.Clear();
-            NpgsqlCommand command = dbConnect.GetCommand("Select phone,name,surname,position,password FROM employees ORDER by surname");
-            NpgsqlDataReader result = command.ExecuteReader();
-            if (result.HasRows)
+            try
             {
-                while (result.Read())
-                {
-                    Employees.Add(new Employee(result.GetString(0), result.GetString(1), result.GetString(2), result.GetString(3), result.GetString(4)));
-                }
-            }
-            result.Close();
+                lbEmployees.Items.Remove(lbEmployees.SelectedItem);
 
+                if (lbEmployees.SelectedItem == null) return;
+
+                string Phone = (lbEmployees.SelectedItem as Employee).Login;
+                NpgsqlCommand command = dbConnect.GetCommand("DELETE FROM employees WHERE phone = @phone");
+                command.Parameters.AddWithValue("@phone", NpgsqlDbType.Varchar, Phone);
+                int result = command.ExecuteNonQuery();
+
+                DataLoader.LoadEmployees();
+
+                remove_Button.Background = Brushes.Red;
+            }
+            catch (Exception ex)
+            {
+                remove_Button.Background = Brushes.Red;
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

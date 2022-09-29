@@ -36,7 +36,7 @@ namespace Study
         {
             try
             {
-                
+
 
                 string role = "Админ";
                 string name = tbCreateName.Text.Trim();
@@ -54,7 +54,6 @@ namespace Study
                     MessageBox.Show("Не совпадают пароли!");
                     return;
                 }
-
                 NpgsqlCommand command = dbConnect.GetCommand("INSERT INTO employees(phone,surname,name,password,position) VALUES (@phone,@surname,@name,@password,@position)");
                 command.Parameters.AddWithValue("@phone", NpgsqlDbType.Varchar, phone);
                 command.Parameters.AddWithValue("@name", NpgsqlDbType.Varchar, surname);

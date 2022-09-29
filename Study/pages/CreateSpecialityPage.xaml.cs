@@ -23,13 +23,12 @@ namespace Study
     /// </summary>
     public partial class SpecialityFrame : Page
     {
-        public ObservableCollection<Speciality> Specialities { get; set; } = new ObservableCollection<Speciality>();
         public Speciality Specialitiy { get; set; } = new Speciality();
         public SpecialityFrame()
         {
             InitializeComponent();
             DataContext = this;
-            LoadSpec();
+            DataLoader.LoadSpecialities();
         }
 
         private void AddSpec(object sender, RoutedEventArgs e)
@@ -51,47 +50,9 @@ namespace Study
             }
             tbSpecId.Clear();
             tbSpecName.Clear();
-            LoadSpec();
-        }
-        private void FirstPage(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(PageControl.main_page);
-        }
-        private void StudPage(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(PageControl.createStudent);
+            DataLoader.LoadSpecialities();
         }
 
-        private void GrPage(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(PageControl.createGroup);
-        }
-
-        private void SpecPage(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(PageControl.createSpec);
-        }
-        private void GoToAddEmployeePage(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(PageControl.AddEmployeePage);
-        }
-
-        private void LoadSpec()
-        {
-            Specialities.Clear();
-            NpgsqlCommand command = dbConnect.GetCommand("Select \"Id\",\"Name\" FROM \"Speciality\" ORDER by \"Id\"");
-            NpgsqlDataReader result = command.ExecuteReader();
-            if (result.HasRows)
-            {
-                while (result.Read())
-                {
-                    Specialities.Add(new Speciality(result.GetInt32(0), result.GetString(1)));
-                }
-            }
-            result.Close();
-
-        }
-        //ДОРАБОТАТЬ РЕДАКТИРОВАНИЕ
         private void SaveSpecEditions(object sender, RoutedEventArgs e)
         {
             spSpecEditor.IsEnabled = false;
