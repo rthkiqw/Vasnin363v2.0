@@ -101,56 +101,56 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddEmployeePage.xaml.cs">
+    <Compile Include="pages2\AddEmployeePage.xaml.cs">
       <DependentUpon>AddEmployeePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Authorization.xaml.cs">
+    <Compile Include="pages2\Authorization.xaml.cs">
       <DependentUpon>Authorization.xaml</DependentUpon>
     </Compile>
     <Compile Include="Class1.cs" />
     <Compile Include="Course.cs" />
-    <Compile Include="CreateAccPage.xaml.cs">
+    <Compile Include="pages2\CreateAccPage.xaml.cs">
       <DependentUpon>CreateAccPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CreateGroupPage.xaml.cs">
+    <Compile Include="pages2\CreateGroupPage.xaml.cs">
       <DependentUpon>CreateGroupPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CreateStudentPage.xaml.cs">
+    <Compile Include="pages2\CreateStudentPage.xaml.cs">
       <DependentUpon>CreateStudentPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataLoader.cs" />
     <Compile Include="dbConnect.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Group.cs" />
-    <Compile Include="CreateSpecialityPage.xaml.cs">
+    <Compile Include="pages2\CreateSpecialityPage.xaml.cs">
       <DependentUpon>CreateSpecialityPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainPage.xaml.cs">
+    <Compile Include="pages2\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="PageControl.cs" />
     <Compile Include="Student.cs" />
-    <Page Include="AddEmployeePage.xaml">
+    <Page Include="pages2\AddEmployeePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Authorization.xaml">
+    <Page Include="pages2\Authorization.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CreateAccPage.xaml">
+    <Page Include="pages2\CreateAccPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CreateGroupPage.xaml">
+    <Page Include="pages2\CreateGroupPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CreateStudentPage.xaml">
+    <Page Include="pages2\CreateStudentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainPage.xaml">
+    <Page Include="pages2\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -166,7 +166,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="CreateSpecialityPage.xaml">
+    <Page Include="pages2\CreateSpecialityPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

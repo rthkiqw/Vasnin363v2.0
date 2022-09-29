@@ -12,6 +12,6 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
-        <Image Margin="10" Source="Images/logo_ktk.png"></Image>
+        <Image Margin="10" Source="../Images/logo_ktk.png"></Image>
     </Grid>
 </Page>

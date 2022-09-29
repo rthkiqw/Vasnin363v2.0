@@ -11,12 +11,12 @@ namespace Study
 {
     public class DataLoader
     {
-        private static ObservableCollection<Course> Courses { get; set; } = new ObservableCollection<Course>();
-        private static ObservableCollection<Student> Students { get; set; } = new ObservableCollection<Student>();
-        private static ObservableCollection<Speciality> Specialities { get; set; } = new ObservableCollection<Speciality>();
-        private static ObservableCollection<Group> Groups { get; set; } = new ObservableCollection<Group>();
-        private static ObservableCollection<Employee> Employees { get; set; } = new ObservableCollection<Employee>();
-        private static ObservableCollection<string> Positions { get; set; } = new ObservableCollection<string>();
+        public static ObservableCollection<Course> Courses { get; set; } = new ObservableCollection<Course>();
+        public static ObservableCollection<Student> Students { get; set; } = new ObservableCollection<Student>();
+        public static ObservableCollection<Speciality> Specialities { get; set; } = new ObservableCollection<Speciality>();
+        public static ObservableCollection<Group> Groups { get; set; } = new ObservableCollection<Group>();
+        public static ObservableCollection<Employee> Employees { get; set; } = new ObservableCollection<Employee>();
+        public static ObservableCollection<string> Positions { get; set; } = new ObservableCollection<string>();
 
         public static void LoadPositions()
         {
@@ -47,7 +47,6 @@ namespace Study
                 }
             }
             result.Close();
-
         }
 
         public static void LoadGroups()
