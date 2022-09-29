@@ -1,0 +1,30 @@
+﻿<Page x:Class="Study.Authorization"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Study"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Authorization">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="0,0,0,5" Grid.Row="1" Background="#404040" Grid.Column="1">
+            <Label HorizontalAlignment="Center" Style="{StaticResource Authorization}">Авторизация</Label>
+            <Label Style="{StaticResource Authorization}">Введите номер телефона:</Label>
+            <TextBox Name="tbAuthLogin"></TextBox>
+            <Label Style="{StaticResource Authorization}">Введите пароль:</Label>
+            <PasswordBox Name="tbAuthPass"></PasswordBox>
+        </StackPanel>
+        <Button Margin="0,0,0,5" Grid.Row="1" Click="LogIn_Button" VerticalAlignment="Bottom" FontWeight="Normal"  Content="Войти" Grid.Column="1"/>
+    </Grid>
+</Page>

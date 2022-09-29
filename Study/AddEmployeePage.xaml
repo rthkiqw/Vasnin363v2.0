@@ -1,0 +1,75 @@
+﻿<Page x:Class="Study.AddEmployeePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Study"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddEmployeePage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <GroupBox Header="Сотрудники">
+        <ListBox Name="lbEmployees" SelectionChanged="CurrentEmployeeEdit" Margin="10" Grid.Column="0" ItemsSource="{Binding Employees}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Style="{DynamicResource ListBoxColor}">
+                        <Run Text="Должность:"/>
+                        <Run Text="{Binding Position}"/>
+                        <LineBreak/>
+                        <Run FontSize="15" Text="{Binding Surname}"/>
+                        <Run FontSize="15" Text="{Binding Name}"/>
+                        <LineBreak/>
+                        <Run Foreground="Yellow" FontSize="12" Text="телефон(логин):"/>
+                        <Run Foreground="Yellow" FontSize="12" Text="{Binding Login}"/>
+                        <LineBreak/>
+                        <Run Foreground="Red" FontSize="12" Text="пароль:"/>
+                        <Run Foreground="Red" FontSize="12" Text="{Binding Password}"/>
+                    </TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        </GroupBox>
+        <GroupBox Grid.Column="1" Header="Редактирование">
+            <StackPanel Name="spEmployeesEditor" IsEnabled="False" DataContext="{Binding Employees}" Margin="10,0,10,0">
+                <Label>Введите имя сотрудника:</Label>
+                <TextBox Name="tbEmpNameEdit" Text="{Binding ElementName=lbEmployees,Path=SelectedItem.Name,UpdateSourceTrigger=PropertyChanged}"/>
+                <Label>Введите фамилию сотрудника:</Label>
+                <TextBox Name="tbEmpSurnameEdit" Text="{Binding ElementName=lbEmployees,Path=SelectedItem.Surname,UpdateSourceTrigger=PropertyChanged}"/>
+                <Label>Номер телефона:</Label>
+                <TextBox IsEnabled="False" Name="tbEmpPhoneEdit" Text="{Binding ElementName=lbEmployees,Path=SelectedItem.Login,UpdateSourceTrigger=PropertyChanged}"/>
+                <Label>Введите пароль:</Label>
+                <TextBox Name="tbEmpPassEdit" Text="{Binding ElementName=lbEmployees,Path=SelectedItem.Password,UpdateSourceTrigger=PropertyChanged}"/>
+                <Label>Выберите должность:</Label>
+                <ComboBox Name="cmbEmpPosEdit" SelectedItem="{Binding ElementName=lbEmployees, Path=SelectedItem.Position}"></ComboBox>
+                <Button Click="SaveEditionsButton" Grid.Column="1" Grid.Row="2" Margin="0,20" >Сохранить</Button>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Grid.Column="2" Header="Новый сотрудник">
+            <StackPanel Margin="10,0,10,0" Grid.Column="1" DataContext="{Binding Employee}">
+                <Label>Введите имя:</Label>
+                <TextBox Text="{Binding Name}" Name="tbEmpName"></TextBox>
+                <Label>Введите фамили.:</Label>
+                <TextBox Text="{Binding Surname}" Name="tbEmpSurname"></TextBox>
+                <Label>Введите номер телефона:</Label>
+                <TextBox Text="{Binding Login}" Name="tbEmpLogin"></TextBox>
+                <Label>Введите пароль:</Label>
+                <TextBox Text="{Binding Password}" Name="tbEmpPassword"></TextBox>
+                <Label>Выберите должность:</Label>
+                <ComboBox Name="cmbEmpPos"></ComboBox>
+                <Button Click="AddEmployee" Grid.Column="1" Grid.Row="2" Margin="0,20" >Новый сотрудник</Button>
+            </StackPanel>
+        </GroupBox>
+        <Button IsEnabled="False" Name="remove_Button" Click="EmployeeRemove" Grid.Row="1" Grid.Column="0" FontSize="12" Content="Удалить" Height="25"></Button>
+    </Grid>
+</Page>
