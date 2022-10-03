@@ -1,0 +1,35 @@
+﻿<Page x:Class="Study.TimeTablePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Study"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TimeTablePage">
+
+    <Grid Name="timeTable">
+        <ListBox Name="lbTimeTable" ItemsSource="{Binding timeTable}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Foreground="MintCream" Name="textblockTimeTable">
+                        <Run Text="{Binding Id}"></Run>
+                        <LineBreak/>
+                        <Run Text="Дата:"></Run>
+                        <Run Text="{Binding Date}"></Run>
+                        <LineBreak/>
+                        <Run Text="Кабинет:"></Run>
+                        <Run Text="{Binding Cabinet}"></Run>
+                        <LineBreak/>
+                        <Run Text="Пара:"></Run>
+                        <Run Text="{Binding Lesson}"></Run>
+                        <LineBreak/>
+                        <Run Text="Айди группы:"></Run>
+                        <Run Text="{Binding groupId}"></Run>
+                        <LineBreak/>
+                    </TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Page>
